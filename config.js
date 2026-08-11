@@ -28,21 +28,21 @@
 const CONFIG = {
   // ── Recipient Info ────────────────────────────────────────────
   name: "Nala",
-  photo: "./img/irene.jpg",       // Place your photo in the img/ folder
+  photo: "./img/nalaku.JPG",       // Place your photo in the img/ folder
   music: "./music/hbd.mpeg",      // Place your music in the music/ folder
 
   // ── Theme Colors ──────────────────────────────────────────────
   // A toggle button lets the viewer switch between dark & light mode.
   colors: {
-    primary: "#f472b6",           // Main accent color (rose pink)
-    accent: "#60a5fa",            // Secondary accent color (sky blue)
+    primary: "#c8a2c8",           // Main accent color (rose pink)
+    accent: "#a3b8cc",            // Secondary accent color (sky blue)
     dark: {
-      background: "#0f172a",      // Slate 900
-      text: "#f1f5f9",            // Slate 100
+      background: "#0d0d12",      // Slate 900
+      text: "#e0e0e0",            // Slate 100
     },
     light: {
-      background: "#fafaf9",      // Stone 50
-      text: "#1e293b",            // Slate 800
+      background: "#fbf9fc",      // Stone 50
+      text: "#2a2135",            // Slate 800
     },
   },
 
@@ -100,9 +100,10 @@ const CONFIG = {
         "Let's face all the surprises the world has waiting for us,",
         "always side by side.",
         "I cherish you more than I can ever say.",
+        "I Love You"
         
       ],
-      bigLetters: "I Love You",
+      bigLetters: "So",
     },
     {
       type: "quote",
@@ -119,8 +120,8 @@ const CONFIG = {
     },
     {
       type: "profile",
-      wishTitle: "Happy Birthday! Nala 🎉",
-      wishText: ";)",
+      wishTitle: "Happy Birthday! Nala",
+      wishText: "Wishing you a wonderful year ahead filled with joy, love, and endless happiness!",
     },
     {
       type: "fireworks",
