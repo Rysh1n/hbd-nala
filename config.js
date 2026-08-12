@@ -56,7 +56,7 @@ const CONFIG = {
     {
       type: "greeting",
       title: "Hi",
-      subtitle: "I really like your name btw!",
+      subtitle: "I really love your name xD!",
     },
     {
       type: "countdown",
@@ -81,6 +81,17 @@ const CONFIG = {
         "I realised, I wanted to do something <strong>special</strong>.",
         "Because,",
         "You are Special <span>:)</span>",
+      ],
+      bigLetters: "So",
+    },
+        {
+      type: "quote",
+      text: "I never felt this way about anyone. I wanna do something for her.",
+      author: "Beauty and the Beast",
+    },
+    {
+      type: "ideas",
+      lines: [
         "First of all, I want to tell you how incredibly grateful I am...",
         "that you chose me to be your life partner.",
         "Thank you for bringing so much color into my life,",
@@ -96,11 +107,11 @@ const CONFIG = {
         "You also hoped to give me a real lilac flower.",
         "So today, I planted this digital one just for you.",
         "A flower that will never wilt, just like my love for you.",
-        "We are only 11 days away from our forever.",
+        "We're only 10 days away from our forever.",
         "Let's face all the surprises the world has waiting for us,",
         "always side by side.",
         "I cherish you more than I can ever say.",
-        "I Love You"
+        "<strong>I Love You</strong>"
         
       ],
       bigLetters: "So",
@@ -120,7 +131,7 @@ const CONFIG = {
     },
     {
       type: "profile",
-      wishTitle: "Happy Birthday! Nala",
+      wishTitle: "Happy Birthday!",
       wishText: "Wishing you a wonderful year ahead filled with joy, love, and endless happiness!",
     },
     {
