@@ -15,24 +15,60 @@
   <link rel="stylesheet" href="./style/main.css" />
 </head>
 
-<!-- LILAC EXECUTION PROTOCOL BY REY -->
-<div id="lilac-terminal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(13, 13, 18, 0.95); z-index:9999; color:#4af626; font-family:'Courier New', monospace; padding:30px; box-sizing:border-box; overflow:hidden;">
-    <div id="console-text" style="font-size: 1.1rem; line-height: 1.6; text-align: left;"></div>
-    <div id="lilac-bloom" style="display:none; text-align:center; margin-top:40px; font-size:120px; animation: growBloom 4s ease-in-out forwards;">
-        🪻
+<!-- ========================================== -->
+<!-- LILAC EXECUTION PROTOCOL BY REY (SIDE-BY-SIDE) -->
+<!-- ========================================== -->
+
+<!-- 1. Tombol Pemicu Rahasia -->
+<button id="btn-lilac-trigger" onclick="startLilacProtocol()" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #0d0d12; border: 1px solid #c8a2c8; color: #c8a2c8; padding: 12px 24px; font-family: 'Courier New', monospace; font-size: 14px; cursor: pointer; border-radius: 8px; z-index: 1000; box-shadow: 0 0 15px rgba(200, 162, 200, 0.4); animation: pulseBtn 2s infinite; display: none;">
+    > Execute: Lilac_Seed.sh
+</button>
+
+<!-- 2. Layar Terminal Hitam -->
+<div id="lilac-terminal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(13, 13, 18, 0.98); z-index:9999; color:#4af626; font-family:'Courier New', monospace; padding:30px; box-sizing:border-box; overflow-y:auto;">
+    
+    <!-- Wadah Flexbox untuk Kiri (Teks) dan Kanan (Bunga) -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; max-width: 900px; margin: 10vh auto 0; gap: 40px;">
+        
+        <!-- Bagian Kiri: Teks Terminal -->
+        <div id="console-text" style="flex: 1; min-width: 300px; font-size: 1.1rem; line-height: 1.6; text-align: left;"></div>
+
+        <!-- Bagian Kanan: Animasi Bunga -->
+        <div id="lilac-bloom" style="display:none; flex: 1; min-width: 250px; text-align:center; animation: growBloom 4s ease-in-out forwards;">
+            
+            <img src="./img/lilac.png" alt="Digital Lilac for Nala" style="width: 100%; max-width: 320px; animation: floatAlive 4s ease-in-out infinite; border-radius: 15px;">
+
+        </div>
     </div>
 </div>
 
+<!-- 3. CSS untuk Animasi -->
 <style>
-    @keyframes growBloom { 
-        0% { transform: scale(0) translateY(50px); opacity:0; text-shadow: 0 0 0px #c8a2c8; } 
-        50% { opacity: 0.8; }
-        100% { transform: scale(1.2) translateY(0); opacity:1; text-shadow: 0 0 30px #c8a2c8, 0 0 60px #c8a2c8; } 
+    @keyframes pulseBtn {
+        0% { box-shadow: 0 0 10px rgba(200, 162, 200, 0.3); }
+        50% { box-shadow: 0 0 25px rgba(200, 162, 200, 0.8); }
+        100% { box-shadow: 0 0 10px rgba(200, 162, 200, 0.3); }
     }
-    .lilac-text { color: #c8a2c8; font-weight: bold; text-shadow: 0 0 10px #c8a2c8; }
+    /* Animasi mekar pertama kali */
+    @keyframes growBloom { 
+        0% { transform: scale(0); opacity:0; filter: drop-shadow(0 0 0px #c8a2c8); } 
+        50% { opacity: 0.8; }
+        100% { transform: scale(1); opacity:1; filter: drop-shadow(0 0 40px #c8a2c8); } 
+    }
+    /* Animasi bernapas/melayang agar terlihat hidup */
+    @keyframes floatAlive {
+        0%, 100% { transform: translateY(0) rotate(-3deg); text-shadow: 0 0 40px #c8a2c8; }
+        50% { transform: translateY(-15px) rotate(3deg); text-shadow: 0 0 80px #c8a2c8; }
+    }
+    .lilac-text { color: #c8a2c8; font-weight: bold; text-shadow: 0 0 10px #c8a2c8; font-size: 1.3rem;}
 </style>
 
+<!-- 4. Script Logika Terminal -->
 <script>
+    setTimeout(() => {
+        document.getElementById('btn-lilac-trigger').style.display = 'block';
+    }, 45000); 
+
     const commands = [
         "> Establishing secure connection to Nala's heart...",
         "> Verifying world_guarantees.sys... [FAILED: NO GUARANTEES FOUND]",
@@ -45,6 +81,8 @@
     ];
 
     function startLilacProtocol() {
+        document.getElementById('btn-lilac-trigger').style.display = 'none';
+        
         const terminal = document.getElementById('lilac-terminal');
         const consoleText = document.getElementById('console-text');
         const bloom = document.getElementById('lilac-bloom');
@@ -58,7 +96,7 @@
         function typeLine() {
             if (lineIndex < commands.length) {
                 let p = document.createElement('p');
-                p.style.margin = "5px 0";
+                p.style.margin = "8px 0";
                 consoleText.appendChild(p);
                 
                 let text = commands[lineIndex];
@@ -70,18 +108,16 @@
                     if (charIndex >= text.length) {
                         clearInterval(typing);
                         lineIndex++;
-                        // Memberikan jeda antar baris seperti server sungguhan
-                        setTimeout(typeLine, 600); 
+                        setTimeout(typeLine, 800); 
                     }
-                }, 40); // Kecepatan mengetik per huruf
+                }, 40);
             } else {
-                // Setelah teks selesai, munculkan bunga Lilac
                 setTimeout(() => {
                     let finalMsg = document.createElement('p');
                     finalMsg.className = "lilac-text";
                     finalMsg.innerHTML = "> SYSTEM OVERRIDE: HAPPY BIRTHDAY, NALA.";
-                    finalMsg.style.textAlign = "center";
-                    finalMsg.style.marginTop = "30px";
+                    finalMsg.style.textAlign = "left"; 
+                    finalMsg.style.marginTop = "40px";
                     consoleText.appendChild(finalMsg);
                     
                     bloom.style.display = 'block';
@@ -92,7 +128,7 @@
         typeLine();
     }
 </script>
-<!-- END LILAC PROTOCOL -->
+<!-- ========================================== -->
 <body>
   <!-- Background Music -->
   <audio class="song" loop autoplay>
