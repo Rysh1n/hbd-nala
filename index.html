@@ -14,17 +14,33 @@
   <!-- Style -->
   <link rel="stylesheet" href="./style/main.css" />
 </head>
+<body>
+  <!-- Background Music -->
+  <audio class="song" loop autoplay>
+    <source src="">
+    Your browser isn't invited for super fun audio time.
+  </audio>
 
+  <!-- All sections are rendered here dynamically from config.js -->
+  <div class="container"></div>
+
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Config & Engine -->
+  <script src="./config.js"></script>
+  <script src="./script/main.js"></script>
+  
 <!-- ========================================== -->
-<!-- LILAC EXECUTION PROTOCOL BY REY (SIDE-BY-SIDE) -->
+<!-- LILAC EXECUTION PROTOCOL BY REY (FIXED SMOOTH LAYOUT) -->
 <!-- ========================================== -->
 
-<!-- 1. Tombol Pemicu Rahasia -->
+<!-- 1. Tombol Pemicu Rahasia (Muncul setelah 45 detik) -->
 <button id="btn-lilac-trigger" onclick="startLilacProtocol()" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #0d0d12; border: 1px solid #c8a2c8; color: #c8a2c8; padding: 12px 24px; font-family: 'Courier New', monospace; font-size: 14px; cursor: pointer; border-radius: 8px; z-index: 1000; box-shadow: 0 0 15px rgba(200, 162, 200, 0.4); animation: pulseBtn 2s infinite; display: none;">
     > Execute: Lilac_Seed.sh
 </button>
 
-<!-- 2. Layar Terminal Hitam -->
+<!-- 2. Layar Terminal Hitam (Overlay) -->
 <div id="lilac-terminal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(13, 13, 18, 0.98); z-index:9999; color:#4af626; font-family:'Courier New', monospace; padding:30px; box-sizing:border-box; overflow-y:auto;">
     
     <!-- Wadah Flexbox untuk Kiri (Teks) dan Kanan (Bunga) -->
@@ -33,41 +49,51 @@
         <!-- Bagian Kiri: Teks Terminal -->
         <div id="console-text" style="flex: 1; min-width: 300px; font-size: 1.1rem; line-height: 1.6; text-align: left;"></div>
 
-        <!-- Bagian Kanan: Animasi Bunga -->
-        <div id="lilac-bloom" style="display:none; flex: 1; min-width: 250px; text-align:center; animation: growBloom 4s ease-in-out forwards;">
-            
+        <!-- Bagian Kanan: Animasi Bunga Pixel Art (Transparan dari awal agar layout stabil) -->
+        <div id="lilac-bloom" style="opacity: 0; flex: 1; min-width: 250px; text-align:center;">
             <img src="./img/lilac.png" alt="Digital Lilac for Nala" style="width: 100%; max-width: 320px; animation: floatAlive 4s ease-in-out infinite; border-radius: 15px;">
-
         </div>
     </div>
 </div>
 
-<!-- 3. CSS untuk Animasi -->
+<!-- 3. CSS Terintegrasi -->
 <style>
     @keyframes pulseBtn {
         0% { box-shadow: 0 0 10px rgba(200, 162, 200, 0.3); }
         50% { box-shadow: 0 0 25px rgba(200, 162, 200, 0.8); }
         100% { box-shadow: 0 0 10px rgba(200, 162, 200, 0.3); }
     }
-    /* Animasi mekar pertama kali */
+    
+    /* Animasi mekar yang dipanggil via Class */
+    .show-bloom {
+        animation: growBloom 4s ease-in-out forwards;
+    }
+    
     @keyframes growBloom { 
-        0% { transform: scale(0); opacity:0; filter: drop-shadow(0 0 0px #c8a2c8); } 
+        0% { transform: scale(0.5); opacity: 0; filter: drop-shadow(0 0 0px #c8a2c8); } 
         50% { opacity: 0.8; }
-        100% { transform: scale(1); opacity:1; filter: drop-shadow(0 0 40px #c8a2c8); } 
+        100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 40px #c8a2c8); } 
     }
-    /* Animasi bernapas/melayang agar terlihat hidup */
+    
     @keyframes floatAlive {
-        0%, 100% { transform: translateY(0) rotate(-3deg); text-shadow: 0 0 40px #c8a2c8; }
-        50% { transform: translateY(-15px) rotate(3deg); text-shadow: 0 0 80px #c8a2c8; }
+        0%, 100% { transform: translateY(0) rotate(-2deg); }
+        50% { transform: translateY(-12px) rotate(2deg); }
     }
-    .lilac-text { color: #c8a2c8; font-weight: bold; text-shadow: 0 0 10px #c8a2c8; font-size: 1.3rem;}
+    
+    .lilac-text { 
+        color: #c8a2c8; 
+        font-weight: bold; 
+        text-shadow: 0 0 10px #c8a2c8; 
+        font-size: 1.3rem;
+    }
 </style>
 
 <!-- 4. Script Logika Terminal -->
 <script>
+    // Memunculkan tombol Execute setelah 45 detik
     setTimeout(() => {
         document.getElementById('btn-lilac-trigger').style.display = 'block';
-    }, 45000); 
+    }, 1000); 
 
     const commands = [
         "> Establishing secure connection to Nala's heart...",
@@ -89,7 +115,7 @@
         
         terminal.style.display = 'block';
         consoleText.innerHTML = '';
-        bloom.style.display = 'none';
+        // Tidak ada lagi perubahan display pada bloom agar layout tidak loncat
 
         let lineIndex = 0;
 
@@ -120,7 +146,8 @@
                     finalMsg.style.marginTop = "40px";
                     consoleText.appendChild(finalMsg);
                     
-                    bloom.style.display = 'block';
+                    // Menambahkan class animasi agar gambar mekar dengan halus
+                    bloom.classList.add('show-bloom');
                 }, 1000);
             }
         }
@@ -129,22 +156,7 @@
     }
 </script>
 <!-- ========================================== -->
-<body>
-  <!-- Background Music -->
-  <audio class="song" loop autoplay>
-    <source src="">
-    Your browser isn't invited for super fun audio time.
-  </audio>
-
-  <!-- All sections are rendered here dynamically from config.js -->
-  <div class="container"></div>
-
-  <!-- Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!-- Config & Engine -->
-  <script src="./config.js"></script>
-  <script src="./script/main.js"></script>
+  
 </body>
 
 </html>
