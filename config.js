@@ -132,7 +132,7 @@ const CONFIG = {
     {
       type: "profile",
       wishTitle: "Happy Birthday!",
-      wishText: "Wishing you a wonderful year ahead filled with joy, love, and endless happiness!",
+      wishText: "I pray you're always showered with happiness and health, that every silent prayer you make is answered beautifully. May you always be enveloped by the warmth of those who love you, may kindness be your constant shadow, and may you forever be my home.",
     },
     {
       type: "fireworks",
