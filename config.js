@@ -144,7 +144,7 @@ const CONFIG = {
     },
     {
       type: "closing",
-      text: "Okay, now come back and tell me if you liked this little magic.",
+      text: "Okay, now for the final magic... please execute the lilac seed below.",
       replayText: "Or click here if you want to read it all over again.🤍",
     },
   ],
