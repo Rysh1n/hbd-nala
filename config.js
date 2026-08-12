@@ -89,6 +89,10 @@ const CONFIG = {
       text: "I never felt this way about anyone. I wanna do something for her.",
       author: "Beauty and the Beast",
     },
+        {
+      type: "stars",
+      count: 100,
+    },
     {
       type: "ideas",
       lines: [
