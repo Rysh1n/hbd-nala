@@ -93,7 +93,7 @@ const CONFIG = {
       type: "ideas",
       lines: [
         "First of all, I want to tell you how incredibly grateful I am...",
-        "that you chose me to be your life partner.",
+        "that you chose to spend the rest of your days with me.",
         "Thank you for bringing so much color into my life,",
         "and for making me happier than I have ever been.",
         "Because of you, I can finally picture something so beautiful...",
