@@ -89,10 +89,6 @@ const CONFIG = {
       text: "I never felt this way about anyone. I wanna do something for her.",
       author: "Beauty and the Beast",
     },
-        {
-      type: "stars",
-      count: 100,
-    },
     {
       type: "ideas",
       lines: [
@@ -115,7 +111,7 @@ const CONFIG = {
         "Let's face all the surprises the world has waiting for us,",
         "always side by side.",
         "I cherish you more than I can ever say.",
-        "<strong>I Love You</strong>"
+        "I Love You"
         
       ],
       bigLetters: "So",
