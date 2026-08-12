@@ -15,6 +15,84 @@
   <link rel="stylesheet" href="./style/main.css" />
 </head>
 
+<!-- LILAC EXECUTION PROTOCOL BY REY -->
+<div id="lilac-terminal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(13, 13, 18, 0.95); z-index:9999; color:#4af626; font-family:'Courier New', monospace; padding:30px; box-sizing:border-box; overflow:hidden;">
+    <div id="console-text" style="font-size: 1.1rem; line-height: 1.6; text-align: left;"></div>
+    <div id="lilac-bloom" style="display:none; text-align:center; margin-top:40px; font-size:120px; animation: growBloom 4s ease-in-out forwards;">
+        🪻
+    </div>
+</div>
+
+<style>
+    @keyframes growBloom { 
+        0% { transform: scale(0) translateY(50px); opacity:0; text-shadow: 0 0 0px #c8a2c8; } 
+        50% { opacity: 0.8; }
+        100% { transform: scale(1.2) translateY(0); opacity:1; text-shadow: 0 0 30px #c8a2c8, 0 0 60px #c8a2c8; } 
+    }
+    .lilac-text { color: #c8a2c8; font-weight: bold; text-shadow: 0 0 10px #c8a2c8; }
+</style>
+
+<script>
+    const commands = [
+        "> Establishing secure connection to Nala's heart...",
+        "> Verifying world_guarantees.sys... [FAILED: NO GUARANTEES FOUND]",
+        "> Overriding system with unconditional_choice.exe... [OK]",
+        "> Initializing healing_protocol... [OK]",
+        "> Loading payload: Lilac_Seed.sh...",
+        "> Planting digital roots...",
+        "> Bypassing wilt_cycle... (This flower will live forever)",
+        "> Executing bloom..."
+    ];
+
+    function startLilacProtocol() {
+        const terminal = document.getElementById('lilac-terminal');
+        const consoleText = document.getElementById('console-text');
+        const bloom = document.getElementById('lilac-bloom');
+        
+        terminal.style.display = 'block';
+        consoleText.innerHTML = '';
+        bloom.style.display = 'none';
+
+        let lineIndex = 0;
+
+        function typeLine() {
+            if (lineIndex < commands.length) {
+                let p = document.createElement('p');
+                p.style.margin = "5px 0";
+                consoleText.appendChild(p);
+                
+                let text = commands[lineIndex];
+                let charIndex = 0;
+
+                let typing = setInterval(() => {
+                    p.innerHTML += text.charAt(charIndex);
+                    charIndex++;
+                    if (charIndex >= text.length) {
+                        clearInterval(typing);
+                        lineIndex++;
+                        // Memberikan jeda antar baris seperti server sungguhan
+                        setTimeout(typeLine, 600); 
+                    }
+                }, 40); // Kecepatan mengetik per huruf
+            } else {
+                // Setelah teks selesai, munculkan bunga Lilac
+                setTimeout(() => {
+                    let finalMsg = document.createElement('p');
+                    finalMsg.className = "lilac-text";
+                    finalMsg.innerHTML = "> SYSTEM OVERRIDE: HAPPY BIRTHDAY, NALA.";
+                    finalMsg.style.textAlign = "center";
+                    finalMsg.style.marginTop = "30px";
+                    consoleText.appendChild(finalMsg);
+                    
+                    bloom.style.display = 'block';
+                }, 1000);
+            }
+        }
+
+        typeLine();
+    }
+</script>
+<!-- END LILAC PROTOCOL -->
 <body>
   <!-- Background Music -->
   <audio class="song" loop autoplay>
