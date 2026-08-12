@@ -51,7 +51,7 @@
 
         <!-- Bagian Kanan: Animasi Bunga Pixel Art (Transparan dari awal agar layout stabil) -->
         <div id="lilac-bloom" style="opacity: 0; flex: 1; min-width: 250px; text-align:center;">
-            <img src="./img/lilaac.png" alt="Digital Lilac for Nala" style="width: 100%; max-width: 320px; animation: floatAlive 4s ease-in-out infinite; border-radius: 15px;">
+            <img src="./img/lilac.png" alt="Digital Lilac for Nala" style="width: 100%; max-width: 320px; animation: floatAlive 4s ease-in-out infinite; mix-blend-mode: screen;">
         </div>
     </div>
 </div>
@@ -70,9 +70,9 @@
     }
     
     @keyframes growBloom { 
-        0% { transform: scale(0.5); opacity: 0; filter: drop-shadow(0 0 0px #c8a2c8); } 
+        0% { transform: scale(0.5); opacity: 0; } 
         50% { opacity: 0.8; }
-        100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 40px #c8a2c8); } 
+        100% { transform: scale(1); opacity: 1; } 
     }
     
     @keyframes floatAlive {
